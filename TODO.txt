@@ -1,0 +1,11 @@
+elton john, 5
+muse, 5
+franz, 4
+moby, 0
+klf, 5
+justin, 1
+
+etykieta rekord .. z ...
+rok znika przy zapisie
+brak zapisu do pliku
+ulozenie przy poziomym widoku
