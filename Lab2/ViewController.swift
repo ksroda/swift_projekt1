@@ -21,7 +21,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var TitleField: UITextField!
     @IBOutlet weak var GenreField: UITextField!
     @IBOutlet weak var YearField: UITextField!
-    
     @IBOutlet weak var RateField: UILabel!
     
     @IBOutlet weak var RatingButton: UIStepper!
@@ -31,9 +30,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var DeleteButton: UIButton!
     @IBOutlet weak var NewButton: UIButton!
     
+    
+    //------------BUTTONS------------------------------------
+    
     @IBAction func NextButtonPressed(sender: AnyObject) {
         i = i + 1;
-        if ( i < ((albums?.count)! - 1)) {
+        if ( i < (albums?.count)!) {
             changeValues()
         } else {
             addNewAlbum()
@@ -50,9 +52,11 @@ class ViewController: UIViewController {
             "year" : Int(YearField.text!)!,
             "rating" : Int(RateField.text!)!
         ]
-        
-        if ( i == ((albums?.count)! - 1)) {
+    
+        if ( i == (albums?.count)! ) {
            albums!.addObject(newAlbum)
+            i = 0
+            changeValues()
         } else {
            edit(i, newAlbum: newAlbum)
         }
@@ -76,11 +80,25 @@ class ViewController: UIViewController {
 
     
     @IBAction func DeleteButtonPressed(sender: AnyObject) {
-        albums!.removeObjectAtIndex(i)
-        changeValues()
+        print("nnn \(i) albums.count \(albums?.count)!")
+        
+            if ((albums?.count)! == 1){
+                albums!.removeObjectAtIndex(i)
+                emptyArray()
+            } else {
+                albums!.removeObjectAtIndex(i)
+                i = 0
+                changeValues()
+            }
+        
+        
+        
+        
     }
     
+    //------- NEW BUTTON -----------------------------------
     @IBAction func NewButtonPressed(sender: AnyObject) {
+        i = (albums?.count)!
         addNewAlbum()
     }
     
@@ -97,7 +115,10 @@ class ViewController: UIViewController {
         DeleteButton.enabled = false
         NewButton.enabled = false
         NextButton.enabled = false
-
+        
+        if( (albums?.count)! > 0 ) {
+            PrevButton.enabled = true
+        }
     }
 
     
@@ -110,7 +131,7 @@ class ViewController: UIViewController {
         RatingButton.maximumValue = 10
         
         //ns dictionary w srodku
-        albums = NSMutableArray(contentsOfFile:plistCatPath!); //zmiana na mutable!!!!!
+        albums = NSMutableArray(contentsOfFile:plistCatPath!);
         changeValues()
     }
 
@@ -119,6 +140,22 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
+    func emptyArray(){
+        print("empty array")
+        
+        ArtistField.text = ""
+        TitleField.text = ""
+        GenreField.text = ""
+        YearField.text = ""
+        RateField.text = ""
+        DeleteButton.enabled = false
+        NewButton.enabled = false
+        PrevButton.enabled = false
+        NextButton.enabled = false
+        i = 0
+    }
+    
     func changeValues(){
         if (i > 0){
             PrevButton.enabled = true
@@ -126,17 +163,20 @@ class ViewController: UIViewController {
             PrevButton.enabled = false
         }
         
-        if (i < ((albums?.count)! - 1)){
+        if (i < (albums?.count)!){
             NextButton.enabled = true
         } else {
             PrevButton.enabled = false
         }
         
-        ArtistField.text = albums![i].valueForKey("artist") as! String
-        TitleField.text = albums![i].valueForKey("title") as! String
-        GenreField.text = albums![i].valueForKey("genre") as! String
-        YearField.text = albums![i].valueForKey("date")?.stringValue
-        RateField.text = albums![i].valueForKey("rating")?.stringValue
+
+            ArtistField.text = albums![i].valueForKey("artist") as! String
+            TitleField.text = albums![i].valueForKey("title") as! String
+            GenreField.text = albums![i].valueForKey("genre") as! String
+            YearField.text = albums![i].valueForKey("date")?.stringValue
+            RateField.text = albums![i].valueForKey("rating")?.stringValue
+
+        
         
         
         DeleteButton.enabled = true
