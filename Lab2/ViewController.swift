@@ -30,6 +30,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var DeleteButton: UIButton!
     @IBOutlet weak var NewButton: UIButton!
     
+
+    @IBOutlet weak var RecordFromLabel: UILabel!
+    
+    @IBOutlet weak var RecordToLabel: UILabel!
     
     //------------BUTTONS------------------------------------
     
@@ -182,6 +186,10 @@ class ViewController: UIViewController {
         DeleteButton.enabled = true
         NewButton.enabled = true
         NextButton.enabled = true
+        
+        
+        RecordFromLabel.text = String(i + 1)
+        RecordToLabel.text = String((albums?.count)!)
     }
 
 }

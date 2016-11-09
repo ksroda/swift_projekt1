@@ -120,6 +120,24 @@
                                     <action selector="NextButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ihS-K5-bjk"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9H-gn-Ehy">
+                                <rect key="frame" x="474" y="559" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="of" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ds2-Je-rCK">
+                                <rect key="frame" x="524" y="559" width="13" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Url-Wa-dx2">
+                                <rect key="frame" x="550" y="559" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -135,8 +153,11 @@
                             <constraint firstItem="hng-DP-QdU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="28" id="LL3-iV-qeY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JSf-Gl-0cn" secondAttribute="trailing" constant="27" id="Lnl-qc-tax"/>
                             <constraint firstItem="bCT-dg-C8X" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="N6v-GG-dl3"/>
+                            <constraint firstItem="Url-Wa-dx2" firstAttribute="leading" secondItem="ds2-Je-rCK" secondAttribute="trailing" constant="13" id="NWq-fX-Jod"/>
                             <constraint firstItem="hng-DP-QdU" firstAttribute="top" secondItem="SDS-N7-xvj" secondAttribute="bottom" constant="24" id="QBJ-G1-Vjp"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ds2-Je-rCK" secondAttribute="bottom" constant="20" id="RIK-ST-SDc"/>
                             <constraint firstItem="Zwc-bP-iyX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="RZM-q8-VXf"/>
+                            <constraint firstItem="ds2-Je-rCK" firstAttribute="leading" secondItem="J9H-gn-Ehy" secondAttribute="trailing" constant="8" id="Set-fK-M4c"/>
                             <constraint firstItem="9Dk-AM-Fpv" firstAttribute="top" secondItem="z2G-L2-uqi" secondAttribute="bottom" constant="15" id="TLF-ax-rYQ"/>
                             <constraint firstItem="z2G-L2-uqi" firstAttribute="top" secondItem="ddB-Yz-lvA" secondAttribute="bottom" constant="17" id="Tpc-bg-WYj"/>
                             <constraint firstItem="ZR9-pS-PM2" firstAttribute="top" secondItem="ytd-fZ-gfX" secondAttribute="bottom" constant="28" id="UNU-Yt-USF"/>
@@ -144,15 +165,18 @@
                             <constraint firstItem="h3S-5z-ZqA" firstAttribute="top" secondItem="JSf-Gl-0cn" secondAttribute="bottom" constant="25" id="X46-GD-m54"/>
                             <constraint firstItem="QdY-oa-d4F" firstAttribute="top" secondItem="h3S-5z-ZqA" secondAttribute="bottom" constant="8" id="XZf-bS-X7n"/>
                             <constraint firstItem="bCT-dg-C8X" firstAttribute="top" secondItem="ZR9-pS-PM2" secondAttribute="bottom" constant="23" id="ZGk-VE-DFz"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Url-Wa-dx2" secondAttribute="bottom" constant="20" id="ZNb-LE-PnC"/>
                             <constraint firstItem="m4O-gp-knm" firstAttribute="leading" secondItem="9Dk-AM-Fpv" secondAttribute="trailing" constant="85" id="bVH-3o-Z29"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YRK-OC-sDE" secondAttribute="trailing" constant="56" id="clX-h5-uUa"/>
                             <constraint firstItem="yPP-5s-z6L" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="4" id="ehH-Ba-XxC"/>
                             <constraint firstItem="QdY-oa-d4F" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fut-KV-xiQ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="J9H-gn-Ehy" secondAttribute="bottom" constant="20" id="gCo-7U-HZr"/>
                             <constraint firstItem="ZR9-pS-PM2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="39" id="gb9-va-YHt"/>
                             <constraint firstItem="m4O-gp-knm" firstAttribute="top" secondItem="z2G-L2-uqi" secondAttribute="bottom" constant="15" id="hty-fa-Wfv"/>
                             <constraint firstItem="yPP-5s-z6L" firstAttribute="leading" secondItem="ytd-fZ-gfX" secondAttribute="trailing" constant="79" id="i5R-gu-8qV"/>
                             <constraint firstItem="9Dk-AM-Fpv" firstAttribute="leading" secondItem="hng-DP-QdU" secondAttribute="trailing" constant="79" id="mFM-Jp-WD2"/>
                             <constraint firstItem="ddB-Yz-lvA" firstAttribute="top" secondItem="YRK-OC-sDE" secondAttribute="bottom" constant="15" id="ntN-Gd-k6u"/>
+                            <constraint firstItem="J9H-gn-Ehy" firstAttribute="leading" secondItem="8Bq-jK-brS" secondAttribute="trailing" constant="8" id="oHV-JK-11R"/>
                             <constraint firstItem="ddB-Yz-lvA" firstAttribute="leading" secondItem="bCT-dg-C8X" secondAttribute="trailing" constant="79" id="ofN-jB-dTI"/>
                             <constraint firstItem="ytd-fZ-gfX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="35" id="q5h-SZ-gSl"/>
                             <constraint firstItem="hZF-rn-g9s" firstAttribute="top" secondItem="QdY-oa-d4F" secondAttribute="bottom" constant="8" id="t8z-8l-ZoZ"/>
@@ -172,6 +196,8 @@
                         <outlet property="PrevButton" destination="Zwc-bP-iyX" id="Tb6-Cx-oHt"/>
                         <outlet property="RateField" destination="9Dk-AM-Fpv" id="IJD-ZW-BeB"/>
                         <outlet property="RatingButton" destination="m4O-gp-knm" id="JzP-Mp-lY9"/>
+                        <outlet property="RecordFromLabel" destination="J9H-gn-Ehy" id="Bba-7z-bvO"/>
+                        <outlet property="RecordToLabel" destination="Url-Wa-dx2" id="yDW-wX-nyK"/>
                         <outlet property="SaveButton" destination="h3S-5z-ZqA" id="9YE-qY-Ifw"/>
                         <outlet property="TitleField" destination="YRK-OC-sDE" id="qLT-2a-g6J"/>
                         <outlet property="YearField" destination="z2G-L2-uqi" id="FMx-UQ-SdT"/>
