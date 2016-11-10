@@ -12,10 +12,11 @@ import Foundation
 class ViewController: UIViewController {
 
     var i = 0;
-    let plistCatPath = NSBundle.mainBundle().pathForResource("albums", ofType: "plist");
+    //let plistCatPath = NSBundle.mainBundle().pathForResource("albums", ofType: "plist");
     
     var albums: NSMutableArray?
     
+    var albumsDocPath : String = ""
     
     @IBOutlet weak var ArtistField: UITextField!
     @IBOutlet weak var TitleField: UITextField!
@@ -44,7 +45,6 @@ class ViewController: UIViewController {
         } else {
             addNewAlbum()
         }
-        
     }
     
     @IBAction func SaveButtonPressed(sender: AnyObject) {
@@ -53,7 +53,7 @@ class ViewController: UIViewController {
             "artist" : ArtistField.text!,
             "title" : TitleField.text!,
             "genre" : GenreField.text!,
-            "year" : Int(YearField.text!)!,
+            "date" : Int(YearField.text!)!,
             "rating" : Int(RateField.text!)!
         ]
     
@@ -65,6 +65,7 @@ class ViewController: UIViewController {
            edit(i, newAlbum: newAlbum)
         }
         //albums?.writeToFile("/albums.plist", atomically: <#T##Bool#>)
+        save()
         
         DeleteButton.enabled = true
         NewButton.enabled = true
@@ -94,10 +95,7 @@ class ViewController: UIViewController {
                 i = 0
                 changeValues()
             }
-        
-        
-        
-        
+        save()
     }
     
     //------- NEW BUTTON -----------------------------------
@@ -133,12 +131,32 @@ class ViewController: UIViewController {
         RatingButton.wraps = true
         RatingButton.autorepeat = true
         RatingButton.maximumValue = 10
+
+        let plistPath = NSBundle.mainBundle().pathForResource("albums", ofType: "plist")!
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+        albumsDocPath = documentsPath.stringByAppendingString("/albums.plist")
+        let fileManager = NSFileManager.defaultManager()
+        if !fileManager.fileExistsAtPath(albumsDocPath) {
+            try? fileManager.copyItemAtPath(plistPath, toPath: albumsDocPath)
+        }
         
         //ns dictionary w srodku
-        albums = NSMutableArray(contentsOfFile:plistCatPath!);
+        albums = NSMutableArray(contentsOfFile:albumsDocPath);
+        
+        ArtistField.addTarget(self, action: "changes:", forControlEvents: UIControlEvents.EditingChanged)
+        TitleField.addTarget(self, action: "changes:", forControlEvents: UIControlEvents.EditingChanged)
+        GenreField.addTarget(self, action: "changes:", forControlEvents: UIControlEvents.EditingChanged)
+        YearField.addTarget(self, action: "changes:", forControlEvents: UIControlEvents.EditingChanged)
+        RatingButton.addTarget(self, action: "changes:", forControlEvents: UIControlEvents.ValueChanged)
+        
         changeValues()
+        
     }
 
+    func changes(textField: UITextField) {
+            SaveButton.enabled = true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -173,24 +191,28 @@ class ViewController: UIViewController {
             PrevButton.enabled = false
         }
         
-
             ArtistField.text = albums![i].valueForKey("artist") as! String
             TitleField.text = albums![i].valueForKey("title") as! String
             GenreField.text = albums![i].valueForKey("genre") as! String
             YearField.text = albums![i].valueForKey("date")?.stringValue
             RateField.text = albums![i].valueForKey("rating")?.stringValue
 
-        
-        
-        
         DeleteButton.enabled = true
         NewButton.enabled = true
         NextButton.enabled = true
         
-        
         RecordFromLabel.text = String(i + 1)
         RecordToLabel.text = String((albums?.count)!)
+            
+        SaveButton.enabled = false
+    }
+    
+    
+    func save(){
+            albums!.writeToFile(albumsDocPath,atomically: true)
     }
 
+    
+    
 }
 
